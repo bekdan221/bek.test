@@ -1,4 +1,4 @@
-    const questions = [
+const questions = [
   {
     text: "Задание 1: Ты пишешь своего первого Telegram-бота на Python и Django. Вдруг код выдал ошибку...",
     options: [
