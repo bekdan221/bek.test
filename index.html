@@ -2,71 +2,49 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>AutoForge 2026</title>
+    <title>Мини-Бильярд</title>
     <style>
-        :root { --car-color: #ff3e3e; }
-        body { margin: 0; background: #0f0f12; color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .container { max-width: 800px; width: 90%; margin-top: 50px; }
-        
-        /* Визуализация машины */
-        .car-display { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 100px; background: #1a1a20; border-radius: 20px; margin-bottom: 30px; transition: 0.5s; }
-        .car-body { color: var(--car-color); filter: drop-shadow(0 0 20px var(--car-color)); }
-        
-        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .panel { background: #1a1a20; padding: 20px; border-radius: 15px; }
-        button { background: #333; color: white; border: none; padding: 10px; margin: 5px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-        button:hover { background: var(--car-color); }
-        .stats { margin-top: 20px; font-family: monospace; color: #00f2fe; }
+        body { margin: 0; background: #222; display: flex; justify-content: center; align-items: center; height: 100vh; color: white; flex-direction: column; }
+        canvas { background: #060; border: 15px solid #5d4037; border-radius: 5px; cursor: crosshair; }
     </style>
 </head>
 <body>
+    <h2>Нажми и тяни, чтобы ударить по белому шару</h2>
+    <canvas id="poolTable" width="800" height="400"></canvas>
 
-<div class="container">
-    <h1>AutoForge 2026</h1>
-    <div class="car-display"><div class="car-body" id="car">🚗</div></div>
-    
-    <div class="controls">
-        <div class="panel">
-            <h3>Цвет кузова</h3>
-            <button onclick="setCarColor('#ff3e3e')">Красный</button>
-            <button onclick="setCarColor('#00f2fe')">Неон</button>
-            <button onclick="setCarColor('#70ff70')">Кислотный</button>
-        </div>
-        <div class="panel">
-            <h3>Двигатель</h3>
-            <button onclick="setEngine('V8', 450)">V8 (450 л.с.)</button>
-            <button onclick="setEngine('Electric', 600)">Electric (600 л.с.)</button>
-        </div>
-    </div>
-    
-    <div class="stats" id="stats">
-        Выберите параметры для начала сборки...
-    </div>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script>
+        const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Events } = Matter;
 
-<script>
-    let config = { color: '#ff3e3e', engine: 'None', hp: 0 };
-    
-    function setCarColor(color) {
-        config.color = color;
-        document.documentElement.style.setProperty('--car-color', color);
-        updateStats();
-    }
-    
-    function setEngine(type, hp) {
-        config.engine = type;
-        config.hp = hp;
-        updateStats();
-    }
-    
-    function updateStats() {
-        document.getElementById('stats').innerHTML = `
-            СБОРКА: ${config.engine} <br>
-            МОЩНОСТЬ: ${config.hp} л.с. <br>
-            ЦВЕТ: ${config.color} <br>
-            STATUS: Ready for track!
-        `;
-    }
-</script>
+        const engine = Engine.create();
+        const render = Render.create({
+            element: document.body.querySelector('canvas'),
+            engine: engine,
+            options: { width: 800, height: 400, wireframes: false, background: '#060' }
+        });
+
+        // Создаем борта
+        const wallOptions = { isStatic: true, render: { fillStyle: '#5d4037' } };
+        const walls = [
+            Bodies.rectangle(400, 0, 800, 30, wallOptions),
+            Bodies.rectangle(400, 400, 800, 30, wallOptions),
+            Bodies.rectangle(0, 200, 30, 400, wallOptions),
+            Bodies.rectangle(800, 200, 30, 400, wallOptions)
+        ];
+
+        // Создаем шары
+        const whiteBall = Bodies.circle(200, 200, 15, { restitution: 0.9, friction: 0.1, render: { fillStyle: '#fff' } });
+        const redBall = Bodies.circle(600, 200, 15, { restitution: 0.9, friction: 0.1, render: { fillStyle: '#f00' } });
+
+        Composite.add(engine.world, [...walls, whiteBall, redBall]);
+
+        // Управление ударом
+        const mouse = Mouse.create(render.canvas);
+        const mouseConstraint = MouseConstraint.create(engine, { mouse: mouse });
+        Composite.add(engine.world, mouseConstraint);
+
+        Render.run(render);
+        Runner.run(Runner.create(), engine);
+    </script>
 </body>
 </html>
