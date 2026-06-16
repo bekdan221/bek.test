@@ -2,84 +2,47 @@ const questions = [
   {
     text: "Задание 1: Ты пишешь своего первого Telegram-бота на Python и Django. Вдруг код выдал ошибку...",
     options: [
-      { text: "Спокойно прочитать текст ошибки, найти строку и исправить баг", isCorrect: true },
-      { text: "Удалить PyCharm, закрыть ноутбук и пойти играть на телефоне", isCorrect: false, loseText: "Ты сдался... Игра окончена!" },
-      { text: "Просто переписать весь код заново наугад, вдруг заработает", isCorrect: false, loseText: "Код запутался ещё сильнее. Игра окончена!" },
-      { text: "Начать бить по клавиатуре и злиться на компьютер", isCorrect: false, loseText: "Клавиатура сломана, бот не написан. Игра окончена!" }
+      { text: "Спокойно прочитать текст ошибки и исправить баг", isCorrect: true },
+      { text: "Удалить PyCharm и пойти играть", isCorrect: false, loseText: "Игра окончена!" },
+      { text: "Переписать код наугад", isCorrect: false, loseText: "Игра окончена!" },
+      { text: "Злиться на компьютер", isCorrect: false, loseText: "Игра окончена!" }
     ]
   },
   {
-    text: "Задание 2: На часах вечер, по плану у тебя тренировка – нужно сделать мощный сет отжиманий...",
+    text: "Задание 2: На часах вечер, тренировка – нужно сделать сет отжиманий...",
     options: [
-      { text: "Пересилить лень, включить бодрую музыку и сделать все подходы", isCorrect: true },
-      { text: "Поесть чипсов, лечь на диван и посмотреть мемы", isCorrect: false, loseText: "Масса не набрана, плечи не стали шире. Игра окончена!" },
-      { text: "Перенести тренировку на завтра (и так каждый день)", isCorrect: false, loseText: "Лень победила. Игра окончена!" },
-      { text: "Сделать только один отжим и сказать: 'Ну, на сегодня хватит'", isCorrect: false, loseText: "Слабый результат. Игра окончена!" }
-    ]
-  },
-  {
-    text: "Задание 3: Друг просит помочь ему выбрать мощную видеокарту для сборки игрового ПК...",
-    options: [
-      { text: "Современную мощную видеокарту серии Nvidia RTX", isCorrect: true },
-      { text: "Старую офисную встроенную графику 2015 года", isCorrect: false, loseText: "ПК не потянул игры. Игра окончена!" },
-      { text: "Скачать побольше оперативной памяти из интернета", isCorrect: false, loseText: "Память из интернета оказалась вирусом. Игра окончена!" },
-      { text: "Сказать, что для игр видеокарта вообще не нужна", isCorrect: false, loseText: "Друг остался без игр и обиделся. Игра окончена!" }
-    ]
-  },
-  {
-    text: "Задание 4: Ты пришел на важную консультацию в Международный колледж IT и бизнеса. Перед тобой тест...",
-    options: [
-      { text: "Внимательно вчитываться в каждый вопрос и думать логически", isCorrect: true },
-      { text: "Попытаться незаметно достать телефон и списать всё из поиска", isCorrect: false, loseText: "Тебя спалили и выгнали с теста. Игра окончена!" },
-      { text: "Тыкать ответы наугад со скоростью света, не читая текст", isCorrect: false, loseText: "Тест завален на 0 баллов. Игра окончена!" },
-      { text: "Попросить соседа подсказать тебе все ответы", isCorrect: false, loseText: "Сосед сам ничего не знал и подсказал неправильно. Игра окончена!" }
-    ]
-  },
-  {
-    text: "Задание 5: Ты накопил денег и выбираешь себе крутую тачку для души...",
-    options: [
-      { text: "Заряженную BMW M3 или Mercedes E63", isCorrect: true },
-      { text: "Старый разваливающийся самокат", isCorrect: false, loseText: "Далеко на нём не уедешь. Игра окончена!" },
-      { text: "Купить жигули без тормозов", isCorrect: false, loseText: "Машина сломалась на первом же перекрёстке. Игра окончена!" },
-      { text: "Взять в кредит электросамокат", isCorrect: false, loseText: "Сел аккумулятор посреди дороги. Игра окончена!" }
+      { text: "Сделать все подходы", isCorrect: true },
+      { text: "Поесть чипсов и лечь на диван", isCorrect: false, loseText: "Игра окончена!" },
+      { text: "Перенести на завтра", isCorrect: false, loseText: "Игра окончена!" },
+      { text: "Сделать один отжим", isCorrect: false, loseText: "Игра окончена!" }
     ]
   }
 ];
 
 let currentStep = 0;
 
-const startBtn = document.getElementById("actionBtn");
-const questText = document.getElementById("questText");
-const optionsContainer = document.getElementById("optionsContainer");
-const stepCounter = document.getElementById("stepCounter");
-const progressBar = document.getElementById("progressBar");
-
 function startGame() {
   currentStep = 0;
-  startBtn.style.display = "none";
+  document.getElementById("actionBtn").style.display = "none";
   showStep();
 }
 
 function showStep() {
   const stepData = questions[currentStep];
-  if (stepCounter) stepCounter.textContent = `Вопрос ${currentStep + 1} из ${questions.length}`;
-  if (questText) questText.textContent = stepData.text;
+  document.getElementById("stepCounter").textContent = "Вопрос " + (currentStep + 1);
+  document.getElementById("questText").textContent = stepData.text;
+  document.getElementById("progressBar").style.width = (currentStep / questions.length) * 100 + "%";
 
-  if (progressBar) {
-    const progressPercent = (currentStep / questions.length) * 100;
-    progressBar.style.width = `${progressPercent}%`;
-  }
+  const container = document.getElementById("optionsContainer");
+  container.innerHTML = "";
 
-  if (optionsContainer) {
-    optionsContainer.innerHTML = "";
-    stepData.options.forEach(option => {
-      const btn = document.createElement("button");
-      btn.className = "btn btn-option";
-      btn.textContent = option.text;
-      btn.onclick = () => handleAnswer(option);
-      optionsContainer.appendChild(btn);
-    });
-  }
+  stepData.options.forEach(function(option) {
+    const btn = document.createElement("button");
+    btn.className = "btn btn-option";
+    btn.textContent = option.text;
+    btn.onclick = function() { handleAnswer(option); };
+    container.appendChild(btn);
+  });
 }
 
 function handleAnswer(option) {
@@ -95,31 +58,20 @@ function handleAnswer(option) {
   }
 }
 
-function showGameOver(loseMessage) {
-  if (optionsContainer) optionsContainer.innerHTML = "";
-  if (progressBar) progressBar.style.width = "0%";
-  if (stepCounter) stepCounter.textContent = "ВЫ ПРОИГРАЛИ";
-  if (questText) questText.textContent = loseMessage;
-  if (startBtn) {
-    startBtn.textContent = "Попробовать заново";
-    startBtn.style.display = "inline-block";
-  }
+function showGameOver(msg) {
+  document.getElementById("optionsContainer").innerHTML = "";
+  document.getElementById("questText").textContent = msg;
+  const btn = document.getElementById("actionBtn");
+  btn.textContent = "Попробовать заново";
+  btn.style.display = "inline-block";
+  btn.onclick = startGame;
 }
 
 function showVictory() {
-  if (optionsContainer) optionsContainer.innerHTML = "";
-  if (progressBar) progressBar.style.width = "100%";
-  if (stepCounter) stepCounter.textContent = "ПОБЕДА!";
-  if (questText) questText.innerHTML = "🎉 Поздравляем! Ты успешно преодолел все испытания, защитил свой финальный IT-проект и стал настоящим победителем! <br><br><strong>Игра пройдена на 100%!</strong>";
-  if (startBtn) {
-    startBtn.textContent = "Играть еще раз";
-    startBtn.style.display = "inline-block";
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("optionsContainer").innerHTML = "";
+  document.getElementById("questText").textContent = "ПОБЕДА! Ты прошел игру!";
   const btn = document.getElementById("actionBtn");
-  if (btn) {
-    btn.onclick = startGame;
-  }
-});
+  btn.textContent = "Играть еще раз";
+  btn.style.display = "inline-block";
+  btn.onclick = startGame;
+}
