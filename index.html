@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>BekdanAuto</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="animations.css">
+<meta charset="UTF-8">
+<title>BekdanAuto ULTRA</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="animations.css">
 </head>
 
 <body>
 
+<div class="bg"></div>
+
 <header>
-  <h1>🚗 BekdanAuto</h1>
-  <p>Премиальный автосалон</p>
+  <h1>🚗 BEKDANAUTO</h1>
+  <p>Choose your garage</p>
 </header>
 
-<div class="filters">
-  <input id="search" placeholder="Поиск авто...">
-  <select id="brand">
-    <option value="all">Все</option>
-    <option value="BMW">BMW</option>
-    <option value="Audi">Audi</option>
-    <option value="Mercedes">Mercedes</option>
-    <option value="Toyota">Toyota</option>
-    <option value="Lexus">Lexus</option>
-    <option value="Porsche">Porsche</option>
-    <option value="Range Rover">Range Rover</option>
-  </select>
+<div class="menu">
+
+  <button onclick="show('BMW')">BMW Garage</button>
+  <button onclick="show('Audi')">Audi Garage</button>
+  <button onclick="show('Mercedes')">Mercedes Garage</button>
+  <button onclick="show('Toyota')">Toyota Garage</button>
+  <button onclick="show('Lexus')">Lexus Garage</button>
+  <button onclick="show('ALL')">All Cars</button>
+
 </div>
 
 <div id="catalog" class="catalog"></div>
 
 <script src="cars.js"></script>
 <script src="script.js"></script>
-<script src="ui.js"></script>
-<script src="particles.js"></script>
+<script src="effects.js"></script>
 
 </body>
 </html>
