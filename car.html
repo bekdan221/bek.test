@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Car</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Car</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -12,23 +12,28 @@
   <h1>BekdanAuto</h1>
 </header>
 
-<div class="car-page">
+<div class="car">
 
-  <h2 id="title"></h2>
+  <img id="img" class="big">
 
-  <img id="mainImg" class="big-img">
+  <h2 id="name"></h2>
+  <p id="price"></p>
 
-  <div id="gallery" class="gallery"></div>
-
-  <div id="info" class="info"></div>
-
-  <button class="btn">WhatsApp</button>
-  <button class="btn">Telegram</button>
+  <button onclick="history.back()">BACK</button>
 
 </div>
 
 <script src="cars.js"></script>
 <script src="script.js"></script>
+
+<script>
+const id=new URLSearchParams(location.search).get("id");
+const car=cars.find(c=>c.id===id);
+
+document.getElementById("img").src=car.img;
+document.getElementById("name").innerText=car.name;
+document.getElementById("price").innerText=car.price;
+</script>
 
 </body>
 </html>
