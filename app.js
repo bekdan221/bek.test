@@ -1,6 +1,7 @@
 let quiz=[];
 let i=0;
 let score=0;
+let answered=false;
 
 function startQuiz(n){
 quiz = quizzes[n];
@@ -11,31 +12,42 @@ load();
 
 function load(){
 
+answered=false;
+
 let q = quiz[i];
 document.getElementById("q").textContent = q.q;
 
 let ans = document.getElementById("answers");
-ans.innerHTML="";
+ans.innerHTML = "";
 
-q.a.forEach((a,index)=>{
+/* 2x2 сетка */
+ans.style.display="grid";
+ans.style.gridTemplateColumns="1fr 1fr";
+ans.style.gap="10px";
+
+q.a.forEach((text,index)=>{
+
 let b=document.createElement("button");
-b.textContent=a;
+b.textContent=text;
 
 b.onclick=()=>{
 
-let buttons = document.querySelectorAll("#answers button");
+if(answered) return;
+answered=true;
 
-buttons.forEach(btn=>btn.disabled=true);
+let all=document.querySelectorAll("#answers button");
+all.forEach(x=>x.disabled=true);
 
 if(index===q.c){
-b.style.background="lime";
+b.style.background="green";
+b.innerHTML="✔ "+text;
 score++;
 }else{
 b.style.background="red";
-b.innerHTML = "❌ " + a;
+b.innerHTML="❌ "+text;
 
-buttons[q.c].style.background="lime";
-buttons[q.c].innerHTML="✔ " + buttons[q.c].textContent;
+all[q.c].style.background="green";
+all[q.c].innerHTML="✔ "+all[q.c].textContent;
 }
 
 update();
@@ -49,11 +61,13 @@ update();
 }
 
 function next(){
+if(!answered) return;
+
 if(i<quiz.length-1){
 i++;
 load();
 }else{
-document.getElementById("q").textContent="ТЕСТ ЗАВЕРШЕН";
+document.getElementById("q").textContent="ТЕСТ ЗАВЕРШЁН 🎉";
 document.getElementById("answers").innerHTML="";
 }
 }
