@@ -19,7 +19,6 @@ text-align:center;
 font-size:28px;
 padding:20px;
 font-weight:bold;
-text-shadow:0 0 10px black;
 }
 
 /* WRAP */
@@ -27,7 +26,6 @@ text-shadow:0 0 10px black;
 display:flex;
 flex-direction:column;
 align-items:center;
-justify-content:center;
 }
 
 /* PROGRESS */
@@ -66,11 +64,6 @@ color:white;
 font-weight:bold;
 }
 
-.menu button:hover{
-background:white;
-color:black;
-}
-
 /* BOX */
 .box{
 width:60%;
@@ -78,48 +71,66 @@ text-align:center;
 background:rgba(0,0,0,0.3);
 padding:30px;
 border-radius:20px;
-backdrop-filter:blur(10px);
 }
 
-/* QUESTION */
-#q{
-font-size:26px;
-margin-bottom:20px;
-}
-
-/* ANSWERS */
+/* ANSWERS GRID */
 #answers button{
-display:block;
 width:100%;
-margin:8px 0;
-padding:12px;
+padding:10px;
+margin:5px;
 border:none;
 border-radius:10px;
 cursor:pointer;
-font-size:16px;
-background:rgba(255,255,255,0.2);
-color:white;
-transition:0.2s;
-}
-
-#answers button:hover{
-background:white;
-color:black;
 }
 
 /* NEXT */
 .next{
-margin-top:15px;
+margin-top:10px;
 padding:10px 20px;
 border:none;
 border-radius:10px;
-cursor:pointer;
 background:gold;
-font-weight:bold;
+cursor:pointer;
 }
 
 /* SCORE */
 #score{
-margin-top:15px;
+margin-top:10px;
+}
+
+/* 🟢 ТИТУЛЬНАЯ */
+.title{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+}
+
+.title .logo{
+font-size:80px;
+}
+
+.title h1{
+font-size:40px;
+}
+
+.title h2{
 font-size:18px;
+opacity:0.8;
+}
+
+.author{
+margin-top:20px;
+font-size:18px;
+}
+
+.title button{
+margin-top:30px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
 }
