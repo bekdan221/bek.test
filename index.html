@@ -1,50 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>BekdanAuto</title>
+<title>Mega Quiz</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>🚗 BEKDANAUTO</header>
+<header>
+  🧠 MEGA QUIZ CHALLENGE
+</header>
 
-<div class="filters">
+<div class="container">
 
-<select id="brand">
-<option value="all">All brands</option>
-<option>BMW</option>
-<option>Audi</option>
-<option>Mercedes</option>
-<option>Toyota</option>
-<option>Honda</option>
-<option>KIA</option>
-</select>
+  <!-- PROGRESS BAR -->
+  <div class="progress">
+    <div id="progress-bar"></div>
+  </div>
 
-<input id="minPrice" placeholder="Price from">
-<input id="maxPrice" placeholder="Price to">
+  <!-- CATEGORY -->
+  <div class="category">
+    <button onclick="startQuiz(0)">IQ тест</button>
+    <button onclick="startQuiz(1)">IT тест</button>
+    <button onclick="startQuiz(2)">Машины</button>
+    <button onclick="startQuiz(3)">Игры</button>
+    <button onclick="startQuiz(4)">Бизнес</button>
+    <button onclick="startQuiz(5)">Общее 1</button>
+    <button onclick="startQuiz(6)">Общее 2</button>
+  </div>
 
-<input id="minMileage" placeholder="Mileage from">
-<input id="maxMileage" placeholder="Mileage to">
+  <!-- QUIZ BOX -->
+  <div class="quiz-box">
 
-<select id="condition">
-<option value="all">Condition</option>
-<option value="new">New</option>
-<option value="used">Used</option>
-</select>
+    <h2 id="question">Выбери тест</h2>
 
-<button onclick="applyFilters()">Search</button>
+    <div id="answers"></div>
+
+    <button onclick="next()">Дальше</button>
+
+    <p id="score"></p>
+
+  </div>
 
 </div>
 
-<div id="catalog" class="catalog"></div>
-
-<script src="cars.js"></script>
+<script src="data.js"></script>
 <script src="app.js"></script>
-<script src="js/filters.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/effects.js"></script>
 
 </body>
 </html>
