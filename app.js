@@ -22,8 +22,22 @@ let b=document.createElement("button");
 b.textContent=a;
 
 b.onclick=()=>{
-if(index===q.c) score++;
-disable();
+
+let buttons = document.querySelectorAll("#answers button");
+
+buttons.forEach(btn=>btn.disabled=true);
+
+if(index===q.c){
+b.style.background="lime";
+score++;
+}else{
+b.style.background="red";
+b.innerHTML = "❌ " + a;
+
+buttons[q.c].style.background="lime";
+buttons[q.c].innerHTML="✔ " + buttons[q.c].textContent;
+}
+
 update();
 };
 
@@ -32,12 +46,6 @@ ans.appendChild(b);
 
 progress();
 update();
-}
-
-function disable(){
-document.querySelectorAll("#answers button").forEach(b=>{
-b.disabled=true;
-});
 }
 
 function next(){
