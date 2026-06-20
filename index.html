@@ -2,15 +2,19 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>System Pulse | Control Center</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Vision | AI Lab</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets.css">
 </head>
 <body>
-    <div class="header">
-        <h1>SYSTEM PULSE</h1>
-        <p>STATUS: <span id="status">ONLINE</span></p>
-    </div>
-    <div class="dashboard" id="dashboard"></div>
+    <div id="particles"></div>
+    <main>
+        <h1>NEURAL VISION</h1>
+        <div id="brain-core"></div>
+        <button onclick="startAnalysis()">ЗАПУСТИТЬ АНАЛИЗ</button>
+    </main>
+    <script src="data.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
