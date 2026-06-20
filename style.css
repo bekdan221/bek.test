@@ -1,9 +1,12 @@
-body { background-color: #0f0f0f; color: #ffffff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
-.hero { text-align: center; padding: 40px 20px; background: #1a1a1a; border-bottom: 2px solid #007bff; margin-bottom: 30px; }
-input { width: 90%; max-width: 500px; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }
-.filter-bar { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
-button { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; background: #252525; color: #ccc; transition: 0.3s; }
-button:hover { background: #007bff; color: white; }
-.catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-.car-card { background: #1a1a1a; padding: 20px; border-radius: 12px; border: 1px solid #333; }
-.car-card button { background: #007bff; width: 100%; margin-top: 10px; color: white; border: none; padding: 10px; border-radius: 5px; }
+body { background-color: #050505; color: #ffffff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+.hero { text-align: center; padding: 60px 20px; background: linear-gradient(180deg, #1a1a1a 0%, #050505 100%); border-bottom: 2px solid #007bff; margin-bottom: 30px; }
+input { width: 90%; max-width: 500px; padding: 15px; border-radius: 12px; border: 1px solid #444; background: #1a1a1a; color: white; margin-bottom: 30px; display: block; margin-left: auto; margin-right: auto; outline: none; transition: border-color 0.3s; }
+input:focus { border-color: #007bff; }
+.filter-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
+button { padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; background: #1a1a1a; color: #ccc; border: 1px solid #333; transition: 0.3s; }
+button:hover { background: #007bff; color: white; border-color: #007bff; }
+.catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.car-card { background: #111; padding: 20px; border-radius: 15px; border: 1px solid #222; transition: transform 0.4s ease, border-color 0.4s; }
+.car-card:hover { transform: translateY(-10px); border-color: #007bff; }
+.car-card h3 { margin: 15px 0; color: #fff; }
+.car-card button { background: #007bff; width: 100%; margin-top: 15px; color: white; padding: 12px; font-weight: bold; }
