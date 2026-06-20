@@ -1,7 +1,100 @@
-body { background: #0a0a0c; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-#app { background: #16161d; padding: 40px; border-radius: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.8); width: 400px; text-align: center; }
-.hidden { display: none; }
-button { background: #252530; color: white; border: 1px solid #444; padding: 15px; margin: 10px; width: 100%; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-button:hover { background: #3b3b4f; border-color: #00d4ff; }
-h1 { color: #00d4ff; }
-#stats { font-size: 0.8em; color: #888; }
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b0b0b;
+  color:white;
+}
+
+header{
+  text-align:center;
+  padding:25px;
+  background:#111;
+}
+
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:15px;
+}
+
+input,select{
+  padding:10px;
+  border-radius:8px;
+  border:none;
+}
+
+.catalog{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:#1a1a1a;
+  width:280px;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.card h3{
+  margin:10px;
+}
+
+.card button{
+  margin:10px;
+  padding:10px;
+  width:90%;
+  background:#00c853;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+.car-page{
+  padding:20px;
+}
+
+.big-img{
+  width:100%;
+  max-height:500px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.gallery{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.gallery img{
+  width:120px;
+  height:80px;
+  object-fit:cover;
+  cursor:pointer;
+  border-radius:6px;
+}
+
+.info{
+  margin-top:20px;
+  line-height:2;
+}
+
+.btn{
+  margin-top:20px;
+  padding:12px;
+  background:#25D366;
+  border:none;
+  color:white;
+  width:200px;
+  border-radius:8px;
+}
