@@ -1,6 +1,6 @@
-body { background: #000; color: #fff; font-family: 'Courier New', monospace; overflow: hidden; margin: 0; }
-main { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; position: relative; z-index: 10; }
-h1 { letter-spacing: 10px; color: #ff00ff; text-shadow: 0 0 20px #ff00ff; margin-bottom: 30px; }
-#brain-core { width: 300px; height: 300px; border: 2px solid #00d4ff; border-radius: 50%; box-shadow: 0 0 50px #00d4ff; margin: 20px; transition: 0.5s; }
-button { background: transparent; border: 1px solid #fff; color: #fff; padding: 15px 30px; cursor: pointer; transition: 0.3s; font-size: 16px; text-transform: uppercase; }
-button:hover { background: #fff; color: #000; box-shadow: 0 0 20px #fff; }
+body { background: #0f0f12; color: #fff; font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+.test-container { background: #1c1c22; padding: 30px; border-radius: 20px; width: 450px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.progress-bg { height: 8px; background: #333; border-radius: 4px; margin-bottom: 20px; }
+#progress-bar { height: 100%; width: 0%; background: #00d4ff; transition: 0.4s; }
+.option-btn { display: block; width: 100%; padding: 12px; margin: 10px 0; background: #2a2a35; border: none; color: white; border-radius: 8px; cursor: pointer; }
+.option-btn:hover { background: #00d4ff; color: #000; }
