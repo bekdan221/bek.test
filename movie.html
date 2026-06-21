@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Movie</title>
-<link rel="stylesheet" href="css/movie.css">
+  <meta charset="UTF-8">
+  <title>Movie</title>
+  <link rel="stylesheet" href="css/movie.css">
 </head>
 <body>
+  <div id="movieDetails"></div>
 
-<div id="movie"></div>
+  <script src="js/movies.js"></script>
+  <script src="js/favorites.js"></script>
+  <script>
+    const id = new URLSearchParams(location.search).get("id");
+    const movie = getMovieById(id);
 
-<script src="js/movies.js"></script>
-<script src="js/favorites.js"></script>
-
-<script>
-const m = JSON.parse(localStorage.getItem("movie"));
-
-document.getElementById("movie").innerHTML = `
-<div class="moviePage">
-  <img src="${m.img}">
-  <div>
-    <h1>${m.title}</h1>
-    <p>${m.cat}</p>
-
-    <button onclick="addFav(${m.id})">❤️ Add to Favorites</button>
-    <button onclick="history.back()">⬅ Back</button>
-  </div>
-</div>
-`;
-</script>
-
+    document.getElementById("movieDetails").innerHTML = `
+      <div class="movie-card">
+        <img src="${movie.poster}">
+        <h1>${movie.title}</h1>
+        <p>${movie.description}</p>
+        <button onclick="toggleFavorite(${movie.id})">❤ В избранное</button>
+      </div>
+    `;
+  </script>
 </body>
 </html>
