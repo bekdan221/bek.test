@@ -1,14 +1,19 @@
-function getFav(){
-return JSON.parse(localStorage.getItem("fav")) || [];
+function toggleFavorite(id) {
+  let fav = JSON.parse(localStorage.getItem("fav")) || [];
+
+  if (fav.includes(id)) {
+    fav = fav.filter(f => f !== id);
+  } else {
+    fav.push(id);
+  }
+
+  localStorage.setItem("fav", JSON.stringify(fav));
 }
 
-function addFav(id){
-const m = movies.find(x=>x.id===id);
-let fav = getFav();
+function renderFavorites() {
+  const fav = JSON.parse(localStorage.getItem("fav")) || [];
+  const list = movies.filter(m => fav.includes(m.id));
 
-if(!fav.find(x=>x.id===id)){
-fav.push(m);
-}
-
-localStorage.setItem("fav",JSON.stringify(fav));
+  document.getElementById("favList").innerHTML =
+    list.map(m => `<p>${m.title}</p>`).join("");
 }
