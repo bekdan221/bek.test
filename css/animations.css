@@ -1,7 +1,2 @@
-.movie {
-  transition: 0.3s;
-}
-
-.movie:hover {
-  transform: scale(1.08);
-}
+.card{transition:.3s}
+.card:hover{transform:scale(1.1)}
