@@ -1,31 +1,52 @@
 body {
-    margin: 0;
-    font-family: Arial;
-    background: #0f0f0f;
-    color: white;
+  margin: 0;
+  font-family: Arial;
+  background: #0b0b0b;
+  color: white;
 }
 
-header {
-    padding: 20px;
-    text-align: center;
+.header {
+  text-align: center;
+  padding: 20px;
 }
 
 input {
-    padding: 10px;
-    width: 60%;
-    border-radius: 10px;
-    border: none;
+  padding: 10px;
+  width: 60%;
+  border-radius: 10px;
+  border: none;
 }
 
-#movies {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    padding: 20px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 20px;
 }
 
 .movie {
-    background: #1c1c1c;
-    padding: 10px;
-    border-radius: 10px;
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+}
+
+.movie img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.movie h3 {
+  margin: 10px;
+}
+
+.movie p {
+  margin: 10px;
+  color: gold;
 }
