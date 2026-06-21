@@ -1,1 +1,7 @@
-{"name":"user","fav":[]}
+[
+  {
+    "id": 1,
+    "name": "User",
+    "avatar": "assets/avatar.png"
+  }
+]
