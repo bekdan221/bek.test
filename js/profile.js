@@ -1,1 +1,2 @@
-console.log("Profile loaded");
+document.getElementById("username").innerText =
+  localStorage.getItem("username") || "Guest";
