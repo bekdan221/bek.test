@@ -1,46 +1,74 @@
-function register() {
-    let user = document.getElementById("username").value;
-    let pass = document.getElementById("password").value;
-    let msg = document.getElementById("msg");
-
-    // проверка: пароль 8 цифр
-    if (!/^\d{8}$/.test(pass)) {
-        msg.innerText = "❌ Пароль должен быть из 8 цифр!";
-        return;
-    }
-
-    if (user === "") {
-        msg.innerText = "❌ Введите никнейм!";
-        return;
-    }
-
-    // сохраняем
-    localStorage.setItem("user", user);
-    localStorage.setItem("pass", pass);
-
-    msg.innerText = "✅ Аккаунт создан!";
+body {
+    font-family: Arial;
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
 }
 
+.container {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
 
-// ВХОД
-function login() {
-    let user = document.getElementById("loginUser").value;
-    let pass = document.getElementById("loginPass").value;
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
 
-    let savedUser = localStorage.getItem("user");
-    let savedPass = localStorage.getItem("pass");
+.tab {
+    width: 50%;
+    padding: 10px;
+    background: #333;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
 
-    let msg = document.getElementById("msg");
+.tab.active {
+    background: #00aaff;
+}
 
-    if (user !== savedUser) {
-        msg.innerText = "❌ Никнейм не верный!";
-        return;
-    }
+.form {
+    display: none;
+}
 
-    if (pass !== savedPass) {
-        msg.innerText = "❌ Пароль не верный!";
-        return;
-    }
+.form.active {
+    display: block;
+}
 
-    msg.innerText = "✅ Успешный вход!";
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+button {
+    width: 95%;
+    padding: 10px;
+    background: #00aaff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#msg {
+    margin-top: 10px;
+    color: yellow;
+}
+
+/* меню после входа */
+.menu {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
 }
