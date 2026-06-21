@@ -1,172 +1,45 @@
-body{
-margin:0;
-font-family:Arial;
-background:linear-gradient(135deg,#1e3c72,#2a5298,#6a11cb);
-background-size:400% 400%;
-animation:bg 10s infinite;
-color:white;
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-@keyframes bg{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
+.box {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
 }
 
-/* HEADER */
-header{
-text-align:center;
-font-size:28px;
-padding:20px;
-font-weight:bold;
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
 }
 
-/* WRAP */
-.wrap{
-display:flex;
-flex-direction:column;
-align-items:center;
+button {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    background: #00aaff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
 }
 
-/* PROGRESS */
-.progress{
-width:60%;
-height:10px;
-background:rgba(255,255,255,0.2);
-border-radius:10px;
-overflow:hidden;
-margin-bottom:15px;
+button:hover {
+    background: #0088cc;
 }
 
-#bar{
-height:100%;
-width:0%;
-background:lime;
-transition:0.3s;
-}
-
-/* MENU */
-.menu{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
-margin-bottom:20px;
-}
-
-.menu button{
-padding:10px 15px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-background:rgba(255,255,255,0.2);
-color:white;
-font-weight:bold;
-}
-
-/* BOX */
-.box{
-width:60%;
-text-align:center;
-background:rgba(0,0,0,0.3);
-padding:30px;
-border-radius:20px;
-}
-
-/* ANSWERS GRID */
-#answers button{
-width:100%;
-padding:10px;
-margin:5px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-}
-
-/* NEXT */
-.next{
-margin-top:10px;
-padding:10px 20px;
-border:none;
-border-radius:10px;
-background:gold;
-cursor:pointer;
-}
-
-/* SCORE */
-#score{
-margin-top:10px;
-}
-
-/* 🟢 ТИТУЛЬНАЯ */
-.title{
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-text-align:center;
-}
-
-.title-content{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:50px;
-}
-
-.left-side{
-text-align:center;
-}
-
-.title .logo{
-font-size:80px;
-}
-
-.title h1{
-font-size:40px;
-}
-
-.title h2{
-font-size:18px;
-opacity:0.8;
-}
-
-.author{
-margin-top:20px;
-font-size:18px;
-}
-
-.title button{
-margin-top:30px;
-padding:12px 25px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-weight:bold;
-}
-
-/* QR-КОД */
-.qr{
-width:220px;
-height:auto;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,255,255,0.3);
-}
-
-/* МОБИЛЬНАЯ ВЕРСИЯ */
-@media(max-width:768px){
-
-.title-content{
-flex-direction:column;
-gap:20px;
-}
-
-.qr{
-width:180px;
-}
-
-.title h1{
-font-size:28px;
-}
-
+#msg {
+    margin-top: 10px;
+    color: yellow;
 }
