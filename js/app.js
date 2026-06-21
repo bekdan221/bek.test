@@ -1,1 +1,1 @@
-
+loadMovies();
